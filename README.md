@@ -4,6 +4,34 @@ You've got a friend in need! Again!
 
 Andy has misplaced of his toys (again) and need your help to organize them.
 
+## Features
+
+This Toy Tales application is a fully functional CRUD (Create, Read, Update, Delete) application that allows users to manage their toy collection. All features have been successfully implemented with proper state management and API integration.
+
+### ✅ Completed Features
+
+1. **Display All Toys** - View all toys on page load
+   - Fetches toys from the backend using `useEffect`
+   - Displays toy cards with name, image, and likes count
+   - Toys persist on page refresh
+
+2. **Add a Toy** - Create a new toy via form submission
+   - Form validation with required fields
+   - POST request to backend to create new toy
+   - Initial likes count set to 0
+   - Form clears after successful submission
+   - New toy immediately appears on the page
+
+3. **Delete a Toy** - Remove a toy from the collection
+   - "Donate to Goodwill" button sends DELETE request
+   - Toy is removed from backend and UI
+   - Updated toy list displays without deleted toy
+
+4. **Like a Toy** - Increment toy's like count
+   - "Like" button sends PATCH request to backend
+   - Likes count increments in real-time
+   - Toy order is maintained in the collection
+
 ## Setup
 
 All the information about Andy's toys can be found in the `db.json` file. We'll
@@ -11,34 +39,100 @@ be using `json-server` to create a RESTful API for our database.
 
 Run `npm install` to install our dependencies.
 
-Then, run `npm run server` to start up `json-server` on `http://localhost:3001`.
+Then, in separate terminal tabs, run:
 
-In another tab, run `npm run dev` to start up our React app at `http://localhost:3000`.
+1. **Start JSON Server** (API backend on port 3001):
+   ```bash
+   npm run server
+   ```
 
-In another tab, run `npm run test` to run the test suite.
+2. **Start React Development Server** (on port 3000):
+   ```bash
+   npm run dev
+   ```
 
-Before you start building out the application, the first step that you should
-take is to examint the current code and component hierarchy. This will tell you 
-how components can pass data to each other as well as where that information should 
-be stored.
+3. **Run Tests** (in another tab):
+   ```bash
+   npm run test
+   ```
 
-## Deliverables
+The application will be available at `http://localhost:3000` once the dev server is running.
 
-- _When our application loads_, make a GET request to `/toys` to fetch the toy
-  array. Given your component tree, think about which component should be
-  responsible for the array. After you have put the data in the proper
-  component, your next job is to render the `ToyCard` components on the page.
+## API Endpoints
 
-- _When the `ToyForm` is submitted_, make a POST request to `/toys` to save a
-  new toy to the server. Using the ideas of controlled form and inverse data
-  flow, think about how to render a new `ToyCard` for the toy that you created.
+The application uses the following RESTful API endpoints:
 
-- _When the `Donate to Goodwill` button is clicked_, make a DELETE request to
-  `/toys/:id` with the ID of the toy that was clicked to delete the toy from the
-  server. The `ToyCard` that you clicked on should also be removed from the DOM.
+- `GET /toys` - Fetch all toys
+- `POST /toys` - Create a new toy
+- `PATCH /toys/:id` - Update toy likes
+- `DELETE /toys/:id` - Delete a toy
 
-- _When the like button is clicked_, make a PATCH request to `/toys/:id` with
-  the id of the toy that was clicked, along with the new number of likes (this
-  should be sent in the body of the PATCH request, as a object:
-  `{ likes: 10 }`), to update the toy on the server. Clicking on the button
-  should also increase the number of likes on the DOM.
+## Component Architecture
+
+### App Component
+- Manages central state for toys and form visibility
+- Handles all CRUD operations
+- Passes callbacks to child components for state updates
+
+### ToyForm Component
+- Controlled form component with name and image inputs
+- Handles POST requests to create new toys
+- Manages form state and validation
+
+### ToyContainer Component
+- Maps over toys array and renders individual ToyCard components
+- Passes down callbacks for delete and update operations
+
+### ToyCard Component
+- Displays individual toy information
+- Handles like button clicks (PATCH requests)
+- Handles delete button clicks (DELETE requests)
+
+## Testing
+
+Run the test suite to verify all features are working:
+
+```bash
+npm run test
+```
+
+The test suite includes tests for:
+- Displaying all toys
+- Creating new toys
+- Deleting toys
+- Liking toys
+
+## Development
+
+### Tech Stack
+- React 19.0.0 with Hooks (useState, useEffect)
+- Vite for fast development and building
+- JSON Server for RESTful API
+- Vitest for testing
+
+### Key Concepts Used
+- Component State Management (useState)
+- Side Effects (useEffect)
+- Event Handling
+- Controlled Components
+- Props and Callbacks
+- Fetch API (GET, POST, PATCH, DELETE)
+- Array Methods (map, filter)
+
+## Implementation Notes
+
+- All components use React Hooks for state and lifecycle management
+- The toys state is centralized in the App component
+- Event handlers use callbacks to maintain single source of truth
+- Form inputs are controlled components
+- DELETE and PATCH requests maintain data consistency between frontend and backend
+
+## Future Enhancements
+
+Possible improvements to the application:
+- Add error handling and loading states
+- Add sorting and filtering options
+- Add local storage to persist data
+- Add animation on toy addition/deletion
+- Add toy search functionality
+- Add edit/update toy name or image feature
