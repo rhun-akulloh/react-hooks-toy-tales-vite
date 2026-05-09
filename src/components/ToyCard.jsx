@@ -1,15 +1,18 @@
 import React from "react";
 
-function ToyCard() {
+function ToyCard({ toy }) {
   return (
     <div className="card" data-testid="toy-card">
-      <h2>{"" /* Toy's Name */}</h2>
+      {/* Display the toy's name */}
+      <h2>{toy.name}</h2>
+      {/* Display the toy's image */}
       <img
-        src={"" /* Toy's Image */}
-        alt={"" /* Toy's Name */}
+        src={toy.image}
+        alt={toy.name}
         className="toy-avatar"
       />
-      <p>{"" /* Toy's Likes */} Likes </p>
+      {/* Display the toy's current likes count */}
+      <p>{toy.likes} Likes </p>
       <button className="like-btn">Like {"<3"}</button>
       <button className="del-btn">Donate to GoodWill</button>
     </div>
