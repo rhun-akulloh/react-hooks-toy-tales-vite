@@ -32,6 +32,24 @@ This Toy Tales application is a fully functional CRUD (Create, Read, Update, Del
    - Likes count increments in real-time
    - Toy order is maintained in the collection
 
+## Application Screenshot
+
+Below is a screenshot of the completed Toy Tales application showing all toys displayed with their information:
+
+**Toy Tales Application - Main View:**
+
+The screenshot displays:
+- **Header**: Toy Tales branding at the top
+- **Add a Toy Button**: Red button to toggle the toy form
+- **Toy Collection**: Multiple toy cards displaying:
+  - Toy name (e.g., Woody, Mr. Potato Head, Slinky Dog, Rex)
+  - Toy image/avatar with visual representation
+  - Current likes count for each toy
+  - "Like <3" button (red) - Click to increment likes count via PATCH request
+  - "Donate to GoodWill" button (red) - Click to delete toy via DELETE request
+
+All toys are fetched from the backend on page load and displayed in a responsive grid layout. Each toy card shows all relevant information and provides interactive buttons for liking and deleting toys.
+
 ## Setup
 
 All the information about Andy's toys can be found in the `db.json` file. We'll
