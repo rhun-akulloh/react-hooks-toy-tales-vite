@@ -33,6 +33,7 @@ This Toy Tales application is a fully functional CRUD (Create, Read, Update, Del
    - Toy order is maintained in the collection
 
 ## Application Screenshot
+![alt text](<Screenshot from 2026-05-09 19-23-02.png>)
 
 Below is a screenshot of the completed Toy Tales application showing all toys displayed with their information:
 
