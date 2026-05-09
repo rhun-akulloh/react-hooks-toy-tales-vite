@@ -24,10 +24,16 @@ function App() {
     setShowForm((showForm) => !showForm);
   }
 
+  // Handle adding a new toy to the state when form is submitted
+  function handleAddToy(newToy) {
+    setToys([...toys, newToy]);
+    setShowForm(false);
+  }
+
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm onAddToy={handleAddToy} /> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
